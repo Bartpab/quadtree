@@ -1,13 +1,21 @@
 #include <SDL2/SDL.h>
+#include "Events.h"
 #include "Engine.h"
+
+class GraphicEngineAllocator: public IEngineAllocator
+{
+public:
+    IEngine* construct(ConstructEngineParameters&);
+};
 
 class GraphicEngine: public IEngine {
 public:
-  GraphicEngine();
+  GraphicEngine(Dispatcher* weakPtrDispatcher);
   ~GraphicEngine();
 
   void init();
   void start();
+  void step();
   void stop();
 
   // Accessors
@@ -20,5 +28,8 @@ private:
 
 private:
   SDL_Renderer* m_Renderer;
-  SDL_Window* m_Window;
+  SDL_Window*   m_Window;
+
+private:
+  Dispatcher* m_WeakPtrDispatcher;
 };

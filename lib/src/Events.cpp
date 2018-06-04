@@ -39,7 +39,10 @@ template <typename T> void EventReceiver<T>::unsubscribe()
 ////////////////
 // Dispatcher //
 ////////////////
-
+Dispatcher::Dispatcher()
+{
+  
+}
 Dispatcher::~Dispatcher()
 {
     std::map<const char*, ReceiversByType_t>::iterator it_1;

@@ -3,6 +3,19 @@
 
 #include "GraphicEngine.h"
 
+///////////////
+// Allocator //
+///////////////
+IEngine* GraphicEngineAllocator::construct(ConstructEngineParameters& params)
+{
+  auto gfxEngine = new GraphicEngine(params.getDispatcher());
+  return (IEngine*)gfxEngine;
+}
+
+////////////
+// Engine //
+////////////
+
 void GraphicEngine::setWindow(SDL_Window* win)
 {
   this->m_Window = win;

@@ -2,15 +2,19 @@ include_directories(include)
 
 find_package(SDL2 REQUIRED)
 
-add_library(lib
+add_library(libquanta
   src/Container.cpp
   src/Events.cpp
 
   src/Application.cpp
-  
-  src/GraphicEngine.cpp
+    src/ApplicationBuilder.cpp
+      src/ConstructEngineParameters.cpp
+    src/ApplicationAccessors.cpp
 
+
+  src/GraphicEngine.cpp
+  src/EventEngine.cpp
 )
 
-include_directories(lib PUBLIC ${SDL2_INCLUDE_DIRS})
-target_link_libraries (lib ${SDL2_LIBRARIES})
+include_directories(libquanta PUBLIC ${SDL2_INCLUDE_DIRS})
+target_link_libraries (libquanta ${SDL2_LIBRARIES})
